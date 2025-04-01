@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Cake</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+             background: linear-gradient(135deg, #9370DB, #800080);
+        }
+
+        .cake-image {
+            width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .butterfly {
+            position: absolute;
+            width: 70px;
+            animation: fly 4s linear infinite;
+        }
+
+
+        .butterfly:nth-child(1) { top: 10%; left: 10%; }
+        .butterfly:nth-child(2) { bottom: 10%; right: 10%; }
+        .butterfly:nth-child(3) { top: 30%; right: 30%; }
+        .butterfly:nth-child(4) { top: 60%; left: 30%; }
+        .butterfly:nth-child(5) { top: 10%; left: 70%; } 
+        .butterfly:nth-child(6) { bottom: 10%; right: 90%; }
+        .butterfly:nth-child(7) { top: 90%; right: 10%; }
+        .butterfly:nth-child(8) { bottom: 50%; left: 10%; }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(0, 0); } /* Placeholder - will be set by JavaScript */
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <img src="cake.png" alt="Birthday Cake" class="cake-image">
+        <img src="Butterflyy.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 2.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 3.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 4.png" alt="Butterfly" class="butterfly">
+    </div>
+
+    <div>
+        <img src="Butterflyy.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 2.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 3.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 4.png" alt="Butterfly" class="butterfly">
+    </div>
+
+    <div>
+        <img src="Butterflyy.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 2.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 3.png" alt="Butterfly" class="butterfly">
+        <img src="Butterfly 4.png" alt="Butterfly" class="butterfly">
+    </div>
+
+    <script>
+        const butterflies = document.querySelectorAll('.butterfly');
+
+        butterflies.forEach(butterfly => {
+            const randomX = Math.floor(Math.random() * 80) - 40;
+            const randomY = Math.floor(Math.random() * 80) - 40;
+
+            const keyframes = `
+                @keyframes fly {
+                    0% { transform: translate(0, 0); }
+                    50% { transform: translate(${randomX}px, ${randomY}px); }
+                    100% { transform: translate(0, 0); }
+                }
+            `;
+
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = keyframes;
+            document.head.appendChild(styleSheet);
+        });
+    </script>
+</body>
+</html>
